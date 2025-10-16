@@ -24,86 +24,29 @@ A more advanced, custom solution that fine-tunes an existing instruction-tuned L
 
 1. **Data Generation:**
    Synthetic company names and their target generalised forms were generated programmatically with ChatGPT.
-
-2. **Fine-tuning:**
-   The model was fine-tuned on **Google Colab** using **[Unsloth](https://github.com/unslothai/unsloth)** and **Low-Rank Adaptation (LoRA)** to efficiently inject task-specific knowledge into an existing LLM.
-
-3. **Inference and Evaluation:**
-   The fine-tuned model was evaluated on a test dataset to measure its accuracy and generalisation performance. The accuracy is 97.6% for our generated inference dataset.
-
-4. **Model Deployment:**
-
-   * The trained model was **saved locally**.
-   * A **modelfile** was created for deployment.
-   * The model was loaded and served **locally via [Ollama](https://ollama.ai)** for fas
-
-## Example Workflow
-
-1. Generate dataset:
-
-   ```python
+   Examples:
+      ```python
    {"input": "Bremen Logistik GmbH", "label": "bremen"}
    {"input": "A-B-C Transport Schweiz", "label": "abc"}
    ```
 
-2. Fine-tune model:
+3. **Fine-tuning:**
+   The model was fine-tuned on **Google Colab** using **[Unsloth](https://github.com/unslothai/unsloth)** and **Low-Rank Adaptation (LoRA)** to efficiently inject task-specific knowledge into an existing LLM. The fine-tuning process and downloading the fine-tuned model can be found in this notebook: [Fine_Tuning_LLM.ipynb](https://github.com/trantrieuvy/names-generaliser/blob/main/Fine_Tuning_LLM.ipynb)
 
-   ```python
-   model = FastLanguageModel.get_peft_model(...)
-   model.train(...)
-   ```
+4. **Inference and Evaluation:**
+   The fine-tuned model was evaluated on a test dataset to measure its accuracy and generalisation performance. The accuracy is 97.6% for our generated inference dataset.
 
-3. Run inference locally with Ollama:
+5. **Model Deployment:**
 
-   ```bash
-   ollama run company-generaliser "Generalize the company name: 'Continental Reifen Deutschland GmbH'"
-   # Output: continental
-   ```
-
----
-
-## Project Structure
-
-```
-company-names-generalisation/
-│
-├── data/
-│   ├── company_cleaning_minroot_1000.json (train set)
-│   └── company_cleaning_minroot_val_disjoint1000.json (inference set)
-│
-├── Fine_Tuning_LLM.ipynb
-│
-├── gguf_model/
-│   └── (fine-tuned model files)
-│
-├── Modelfile
-├── requirements.txt
-└── README.md
-```
-
----
-
-## 🧪 Results
-
-* The fine-tuned model achieved **high consistency** on unseen company names.
-* Inference via Ollama was **faster** and **more reliable** compared to API calls for small inputs.
-* LoRA adaptation allowed training with **low GPU memory usage** without sacrificing performance.
-
----
-
-## 📖 Future Work
-
-* Experiment with **different LoRA ranks and target modules** for optimization.
-* Extend dataset with **multilingual company names** (e.g., French, Spanish).
-* Integrate into a **RAG-based system** for enterprise name standardisation.
-
----
-
-## 🧑‍💻 Author
-
-Developed by **Vy Tran**,
-as part of ongoing experiments in efficient fine-tuning and deployment of lightweight LLMs.
-
----
-
-Would you like me to make this version also include **badges** (e.g., Python, LoRA, Ollama, License, etc.) and **a short quickstart section** with installation and run commands? It would make it look even more professional for GitHub.
+   * The trained model **phi-3-mini-4k-instruct.Q4_K_M.gguf** was saved locally.
+   * A [Modelfile](https://github.com/trantrieuvy/names-generaliser/blob/main/Modelfile) was created for deployment.
+     The Modelfile is used to create a model with Ollama:
+      ```bash
+      ollama create names_generaliser -f Modelfile
+      ```
+   * The model was loaded and served **locally via [Ollama](https://ollama.ai)**.
+      ```bash
+      ollama run company-generaliser
+      # Input: Dopper B.V. 
+      # Output: "dopper"
+      ```
