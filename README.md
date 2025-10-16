@@ -34,7 +34,7 @@ A more advanced, custom solution that fine-tunes an existing instruction-tuned L
    The model was fine-tuned on **Google Colab** using **[Unsloth](https://github.com/unslothai/unsloth)** and **Low-Rank Adaptation (LoRA)** to efficiently inject task-specific knowledge into an existing LLM. The fine-tuning process and downloading the fine-tuned model can be found in this notebook: [Fine_Tuning_LLM.ipynb](https://github.com/trantrieuvy/names-generaliser/blob/main/Fine_Tuning_LLM.ipynb)
 
 4. **Inference and Evaluation:**
-   The fine-tuned model was evaluated on a test dataset to measure its accuracy and generalisation performance. The accuracy is 97.6% for our generated inference dataset.
+   The fine-tuned model was evaluated on a test dataset to measure its accuracy and generalisation performance. The accuracy is 97.6% for our generated inference dataset. The predicted names for the inference dataset can be found at [results.csv](https://github.com/trantrieuvy/names-generaliser/blob/main/results.csv)
 
 5. **Model Deployment:**
 
