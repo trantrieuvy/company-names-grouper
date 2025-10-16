@@ -7,7 +7,9 @@ The goal is to map messy, inconsistent company name formats into their unified, 
 
 Two main approaches are implemented to achieve this:
 
-### **1. API-based LLM Generalisation**
+### **1. API-based LLM Generalisation** 
+[names_grouping.ipynb](https://github.com/trantrieuvy/names-generaliser/blob/main/names_grouping.ipynb)
+
 
 A straightforward pipeline using **OpenAI’s API**:
 
