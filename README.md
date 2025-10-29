@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/trantrieuvy/names-generaliser/main/lora_with_unsloth.png" alt="Pipeline" width="400"/>
+  <img src="https://raw.githubusercontent.com/trantrieuvy/names-generaliser/main/lora_with_unsloth.png" alt="Pipeline" width="1000"/>
 </p>
 
 # Company Names Generalisation
