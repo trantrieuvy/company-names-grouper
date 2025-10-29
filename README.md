@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="https://raw.githubusercontent.com/trantrieuvy/names-generaliser/main/lora_with_unsloth.png" alt="Pipeline" width="400"/>
+</p>
+
 # Company Names Generalisation
 
 This project focuses on **generalising variations of company names**, a step that follows cleaning raw or “dummy” company names using a **LLM**.
